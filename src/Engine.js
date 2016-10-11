@@ -15,7 +15,22 @@ var plateau;
         ];
         return this.plateau;
     }
-    
-    
 
+
+    this.choixCouleur= function( couleur ){
+
+        if(this.plateau[0][0]==couleur){
+            return true;
+        }
+        if(this.plateau[0][5]==couleur){
+            return true;
+        }
+        if(this.plateau[5][0]==couleur){
+            return true;
+        }
+        if(this.plateau[5][5]==couleur){
+            return true;
+        }
+        return False;
+    };
 };
