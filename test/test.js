@@ -12,3 +12,7 @@ PalettoTestCase.prototype.testStory1 = function () {
     assertTrue(plateau[0][4]=="Red" && plateau[1][3]=="Red" && plateau[2][5]=="Red" && plateau[3][0]=="Red" && plateau[3][2]=="Red" && plateau[5][3]=="Red");
     assertTrue(plateau[1][0]=="Yellow" && plateau[1][4]=="Yellow" && plateau[2][1]=="Yellow" && plateau[4][2]=="Yellow" && plateau[4][4]=="Yellow" && plateau[5][0]=="Yellow");
 };
+
+PalettoTestCase.prototype.testStory2 = function () {
+    assertTrue(e.choixCouleur("Yellow"));
+};
