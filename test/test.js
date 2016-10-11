@@ -3,8 +3,10 @@
 var PalettoTestCase = TestCase("PalettoTestCase");
 
 var e = new Engine();
+var plateau=e.init();
+
 PalettoTestCase.prototype.testStory1 = function () {
-    var plateau=e.init();
+
     assertTrue(plateau[0][0]=="Black" && plateau[2][4]=="Black" && plateau[3][1]=="Black" && plateau[4][3]=="Black" && plateau[5][2]=="Black" && plateau[5][5]=="Black");
     assertTrue(plateau[0][1]=="Green" && plateau[1][2]=="Green" && plateau[3][3]=="Green" && plateau[4][1]=="Green" && plateau[4][5]=="Green" && plateau[5][4]=="Green");
     assertTrue(plateau[0][2]=="White" && plateau[0][5]=="White" && plateau[1][1]=="White" && plateau[2][3]=="White" && plateau[3][5]=="White" && plateau[4][0]=="White");
@@ -15,4 +17,10 @@ PalettoTestCase.prototype.testStory1 = function () {
 
 PalettoTestCase.prototype.testStory2 = function () {
     assertTrue(e.choixCouleur("Yellow"));
+};
+
+PalettoTestCase.prototype.testStory3 = function () {
+    plateau[5][0]="";
+    assertTrue(e.nbPieces()==35);
+    assertTrue(j1[0]=="Yellow");
 };
