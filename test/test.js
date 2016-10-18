@@ -20,7 +20,11 @@ PalettoTestCase.prototype.testStory2 = function () {
 };
 
 PalettoTestCase.prototype.testStory3 = function () {
-    plateau[5][0]="";
+    var j1=new Array(6);
+    j1=e.initJ();
+    e.ajoutPiece(1,"Yellow");
+    plateau[5][0]="0";
     assertTrue(e.nbPieces()==35);
-    assertTrue(j1[0]=="Yellow");
+    assertTrue(e.pieceJ(1,5)=="1");
 };
+
