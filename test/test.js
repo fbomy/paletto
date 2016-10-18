@@ -22,9 +22,21 @@ PalettoTestCase.prototype.testStory2 = function () {
 PalettoTestCase.prototype.testStory3 = function () {
     var j1=new Array(6);
     j1=e.initJ();
-    e.ajoutPiece(1,"Yellow");
+    e.ajoutPiece(1,"Yellow",1);
     plateau[5][0]="0";
     assertTrue(e.nbPieces()==35);
     assertTrue(e.pieceJ(1,5)=="1");
 };
 
+PalettoTestCase.prototype.testStory4=function(){
+    e.joueurSuivant();
+    assertTrue(e.getJoueurActuel()==2);
+    assertTrue(e.getVoisin("Black")<=2);
+    assertTrue(e.getVoisin("White")<=2);
+    assertTrue(e.getVoisin("Blue")<=2);
+    e.ajoutPiece(2,"Black",2);
+    plateau[0][0]="0";
+    plateau[5][5]="0";
+    assertTrue(e.nbPieces()==33);
+
+};
