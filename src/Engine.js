@@ -94,7 +94,6 @@ var Engine = function () {
             }
             j--;
         }
-        console.log(voisin);
         return voisin;
     }
 

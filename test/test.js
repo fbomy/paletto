@@ -40,3 +40,11 @@ PalettoTestCase.prototype.testStory4=function(){
     plateau[5][5]="0";
     assertTrue(e.nbPieces()==33);
 };
+
+
+PalettoTestCase.prototype.testStory5=function(){
+    plateau=e.init2();
+    e.joueurSuivant();
+    assertTrue(e.getJoueurActuel()==1);
+    assertTrue(e.voisinCommun("22")==false);
+};
