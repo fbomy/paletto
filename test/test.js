@@ -31,12 +31,12 @@ PalettoTestCase.prototype.testStory3 = function () {
 PalettoTestCase.prototype.testStory4=function(){
     e.joueurSuivant();
     assertTrue(e.getJoueurActuel()==2);
-    assertTrue(e.getVoisin("Black")<=2);
-    assertTrue(e.getVoisin("White")<=2);
-    assertTrue(e.getVoisin("Blue")<=2);
+    assertTrue(e.getVoisin("00")<=2);
+    assertTrue(e.getVoisin("55")<=2);
+    assertTrue(e.getVoisin("51")<=2);
+    assertTrue(e.getVoisin("40")<=2);
     e.ajoutPiece(2,"Black",2);
     plateau[0][0]="0";
     plateau[5][5]="0";
     assertTrue(e.nbPieces()==33);
-
 };

@@ -9,7 +9,6 @@ var Engine = function () {
     var joueur_actuel=1;
     var indice=[0,1,2,3,4,5];
 
-
     this.init = function(){
         this.plateau = [
             ["Black", "Green", "White", "Blue", "Red", "White"],
@@ -30,6 +29,19 @@ var Engine = function () {
         }
     }
 
+    this.getJoueurActuel=function(){
+        return joueur_actuel;
+    }
+
+    this.joueurSuivant=function(){
+        if(joueur_actuel==1){
+            joueur_actuel=2;
+        }
+        else if(joueur_actuel==2){
+            joueur_actuel=1;
+        }
+    }
+
     var indiceCouleur= function(coul){
         for(var i=0; i<6; i++){
             if(couleur[i]==coul){
@@ -39,15 +51,53 @@ var Engine = function () {
         }
     }
 
-    this.ajoutPiece = function(joueuractuel,coul){
+    this.ajoutPiece = function(joueuractuel,coul,nombre){
         var compteur=indiceCouleur(coul);
         if(joueuractuel==1){
-            j1[compteur]+=1;
+            j1[compteur]+=nombre;
         }
         if(joueuractuel==2){
-            j2[compteur]+=1;
+            j2[compteur]+=nombre;
         }
     }
+
+    this.getVoisin=function(position){
+        var i= position.charAt(0);
+        var j= position.charAt(1);
+
+        var voisin=0;
+        if(i!=0){
+            i--;
+            if(this.plateau[i][j]!=0){
+                voisin++;
+            }
+            i++;
+        }
+        if(j!=0){
+            j--;
+            if(this.plateau[i][j]!=0){
+                voisin++;
+            }
+            j++;
+        }
+        if(i!=5){
+            i++;
+            if(this.plateau[i][j]!=0){
+                voisin++;
+            }
+            i--;
+        }
+        if(j!=5){
+            j++;
+            if(this.plateau[i][j]!=0){
+                voisin++;
+            }
+            j--;
+        }
+        console.log(voisin);
+        return voisin;
+    }
+
 
     this.choixCouleur= function( couleur ){
 
@@ -63,7 +113,7 @@ var Engine = function () {
         if(this.plateau[5][5]==couleur){
             return true;
         }
-        return False;
+        return false;
     };
 
     this.nbPieces= function(){
@@ -80,14 +130,12 @@ var Engine = function () {
     };
 
     this.pieceJ=function(joueuractuel,indice){
-
         if(joueuractuel==1){
             return j1[indice];
         }
         else if(joueuractuel==2){
             return j2[indice];
         }
-
     }
 
 };
