@@ -21,6 +21,19 @@ var Engine = function () {
         return this.plateau;
     }
 
+    this.init2 = function(){
+        this.plateau = [
+            ["0", "0", "0", "Blue", "Red", "White"],
+            ["0", "0", "0", "Red", "Yellow", "0"],
+            ["0", "0", "Blue", "White", "Black", "0"],
+            ["Red", "Black", "Red", "0", "0", "0"],
+            ["0", "Green", "Yellow", "0", "0", "0"],
+            ["0", "0", "Black", "0", "0", "0"]
+        ];
+        return this.plateau;
+    }
+
+
     this.initJ=function(){
 
         for(var i=0; i<6; i++){
@@ -61,39 +74,53 @@ var Engine = function () {
         }
     }
 
+    this.comptVoisin=function(tableau){
+        var compteur=0;
+        for(var i=0;i<4;i++){
+            if(tableau[i]!=0){
+                compteur++;
+            }
+        }
+        return compteur;
+    }
+
     this.getVoisin=function(position){
         var i= position.charAt(0);
         var j= position.charAt(1);
+        var voisin=new Array(4);
 
-        var voisin=0;
+        for(var a=0;a<4;a++){
+            voisin[a]=0;
+        }
         if(i!=0){
             i--;
             if(this.plateau[i][j]!=0){
-                voisin++;
+                voisin[0]=String(i)+String(j);
             }
             i++;
         }
         if(j!=0){
             j--;
             if(this.plateau[i][j]!=0){
-                voisin++;
+                voisin[1]=String(i)+String(j);
             }
             j++;
         }
         if(i!=5){
             i++;
             if(this.plateau[i][j]!=0){
-                voisin++;
+                voisin[2]=String(i)+String(j);
             }
             i--;
         }
         if(j!=5){
             j++;
             if(this.plateau[i][j]!=0){
-                voisin++;
+                voisin[3]=String(i)+String(j);
             }
             j--;
         }
+        console.log(voisin);
         return voisin;
     }
 
@@ -135,6 +162,48 @@ var Engine = function () {
         else if(joueuractuel==2){
             return j2[indice];
         }
+    }
+
+    this.voisinCommun=function(position,voisin){
+        var a; var b; var bx; var by;
+        for(var i=0; i<4; i++){
+            if(i==0){
+                var a= voisin[i+1];
+                var b= voisin[3];
+            }
+            else if(i==3){
+                var a= voisin[0];
+                var b= voisin[i-1];
+            }
+            else{
+                var a= voisin[i+1];
+                var b= voisin[i-1];
+            }
+            if(a!="0" && b!="0" ){
+                bx=a.charAt(0);
+                by=b.charAt(1);
+                console.log(bx);
+                if(bx>c){
+                    bx--;
+                }
+                if(bx<c){
+                    bx++;
+                }
+                if(by>l){
+                    by--;
+                }
+                if(by<l){
+                    by++;
+                }
+
+                if(this.plateau[bx][by]!="0"){
+                    return true;
+                }
+            }
+
+        }
+        return false;
+
     }
 
 };

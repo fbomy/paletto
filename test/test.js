@@ -31,10 +31,14 @@ PalettoTestCase.prototype.testStory3 = function () {
 PalettoTestCase.prototype.testStory4=function(){
     e.joueurSuivant();
     assertTrue(e.getJoueurActuel()==2);
-    assertTrue(e.getVoisin("00")<=2);
-    assertTrue(e.getVoisin("55")<=2);
-    assertTrue(e.getVoisin("51")<=2);
-    assertTrue(e.getVoisin("40")<=2);
+    var tab=e.getVoisin("00");
+    assertTrue(e.comptVoisin(tab)<=2);
+    tab=e.getVoisin("55");
+    assertTrue(e.comptVoisin(tab)<=2);
+    tab=e.getVoisin("51");
+    assertTrue(e.comptVoisin(tab)<=2);
+    tab=e.getVoisin("40");
+    assertTrue(e.comptVoisin(tab)<=2);
     e.ajoutPiece(2,"Black",2);
     plateau[0][0]="0";
     plateau[5][5]="0";
@@ -46,5 +50,6 @@ PalettoTestCase.prototype.testStory5=function(){
     plateau=e.init2();
     e.joueurSuivant();
     assertTrue(e.getJoueurActuel()==1);
-    assertTrue(e.voisinCommun("22")==false);
+    var voisin=e.getVoisin("22");
+    assertTrue(e.voisinCommun("22", voisin)==false);
 };
