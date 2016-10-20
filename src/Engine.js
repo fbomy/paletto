@@ -140,6 +140,7 @@ var Engine = function () {
             return true;
         }
         return false;
+        
     };
 
     this.nbPieces= function(){
